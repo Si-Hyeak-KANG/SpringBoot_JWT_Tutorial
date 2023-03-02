@@ -28,3 +28,8 @@ logging:
   level:
     me.james: DEBUG
 
+# HS512 알고리즘 사용, 따라서 Secret key는 64 Byte 이상
+jwt:
+  header: Authorization
+  secret: cZlsdmVdflkmsktkmeklmkmcmXCVEl10sdfmclZZDVdfklf20149vkjlskjkjdlkjfWcvkppwkdslkfasdjosdkkzWWERQ1zZwNyZXQKdXRVCMcmd3C10JJDsojvklqqwkllmc
+  token-validity-in-seconds: 86400
