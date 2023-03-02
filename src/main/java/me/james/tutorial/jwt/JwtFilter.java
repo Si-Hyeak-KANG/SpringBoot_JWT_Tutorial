@@ -35,14 +35,6 @@ public class JwtFilter extends GenericFilterBean {
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
 
-        // ISSUE : 서블릿 동작전 해당 필터가 무조건적으로 실행되는데.
-        // 당연히 Jwt 가 없는, 인증이 필요없는 URI에서 자꾸 에러를 return하게 됨.
-        // 해당 문제를 해결하기 위해 아래 조건문 추가.
-        if (requestURI.equals("/api/authenticate")) {
-            chain.doFilter(request,response);
-            return;
-        }
-
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
